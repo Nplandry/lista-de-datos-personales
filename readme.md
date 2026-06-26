@@ -93,16 +93,16 @@ npm start
 
 Queda disponible en `http://localhost:4200`.
 
-Compilar para producción (genera el directorio `dist/`):
-
-```bash
-npm run build
-```
 
 Ejecutar los tests:
 
 ```bash
 npm test
+```
+Otros:
+Compilacion para produccion
+```bash
+npm run build
 ```
 
 ### Funcionalidades

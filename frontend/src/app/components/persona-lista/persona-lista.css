@@ -1,0 +1,62 @@
+.persona-lista {
+    margin: 0 auto;
+    padding: 0 2em;
+}
+
+.persona-lista__titulo {
+    text-align: center;
+    font-weight: 600;
+}
+
+.persona-lista__tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font: inherit;
+}
+
+.persona-lista__tabla th,
+.persona-lista__tabla td {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(24, 24, 27, 0.1);
+}
+
+.persona-lista__tabla th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: rgb(63, 63, 70);
+}
+
+.persona-lista__tabla tbody tr {
+    transition: background 0.1s;
+}
+
+.persona-lista__tabla tbody tr:hover {
+    background: rgba(24, 24, 27, 0.03);
+}
+
+.persona-lista__eliminar {
+    padding: 0.4rem 1rem;
+    border: 1px solid rgb(92, 92, 92);
+    border-radius: 0.5rem;
+    background: rgb(255, 255, 255);
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    transition: border 0.1s, background 0.1s;
+}
+
+.persona-lista__eliminar:hover {
+    border: 1px solid rgb(40, 40, 40);
+    background: rgba(24, 24, 27, 0.04);
+}
+
+.persona-lista__eliminar:active {
+    transform: scale(0.98);
+}
+
+.persona-lista__vacio {
+    text-align: center;
+    color: rgb(113, 113, 122);
+    padding: 1.5rem 1rem;
+}

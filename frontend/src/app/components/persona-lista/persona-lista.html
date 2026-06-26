@@ -1,0 +1,36 @@
+<div class="persona-lista">
+  <h2 class="persona-lista__titulo">Lista de Personas</h2>
+
+  <table class="persona-lista__tabla">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>Email</th>
+        <th>Edad</th>
+        <th>Región</th>
+        <th>Comuna</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (persona of personas(); track persona.id) {
+        <tr>
+          <td>{{ persona.nombre }}</td>
+          <td>{{ persona.apellido }}</td>
+          <td>{{ persona.email }}</td>
+          <td>{{ persona.edad }}</td>
+          <td>{{ persona.region }}</td>
+          <td>{{ persona.comuna }}</td>
+          <td>
+            <button class="persona-lista__eliminar" type="button" (click)="onEliminar(persona.id)">Eliminar</button>
+          </td>
+        </tr>
+      } @empty {
+        <tr>
+          <td class="persona-lista__vacio" colspan="7">No hay personas registradas.</td>
+        </tr>
+      }
+    </tbody>
+  </table>
+</div>

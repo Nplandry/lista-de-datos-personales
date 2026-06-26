@@ -1,0 +1,9 @@
+<h1 id="title">Lista de datos personales</h1>
+
+<hr />
+
+<app-persona-form></app-persona-form>
+
+<hr />
+
+<app-persona-lista [personas]="personas()" (eliminar)="eliminar($event)"></app-persona-lista>

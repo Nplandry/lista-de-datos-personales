@@ -2,8 +2,8 @@
 
 Aplicacion simple para administrar personas mediante consultas REST desde un cliente SPA.
 
-- **Backend:** API REST con Spring Boot (maven y java 17).
-- **Frontend:** Angular (version 21) que consume la API.
+- **Backend:** API REST con Spring Boot (Maven y Java 17).
+- **Frontend:** Angular (Version 21) que consume la API.
 
 ## Requisitos
 

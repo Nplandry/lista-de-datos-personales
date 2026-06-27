@@ -15,6 +15,7 @@ export class PersonaForm implements OnInit {
   private readonly regionService = inject(RegionService);
 
   readonly regiones = signal<Region[]>([]);
+  readonly error = signal('');
 
   readonly form = new FormGroup({
     nombre: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
@@ -26,7 +27,10 @@ export class PersonaForm implements OnInit {
   });
 
   ngOnInit(): void {
-    this.regionService.listar().subscribe((regiones) => this.regiones.set(regiones));
+    this.regionService.listar().subscribe({
+      next: (regiones) => this.regiones.set(regiones),
+      error: () => this.error.set('No se pudieron cargar las regiones.'),
+    });
 
     this.form.controls.region.valueChanges.subscribe((region) => {
       this.form.controls.comuna.setValue('');
@@ -47,6 +51,7 @@ export class PersonaForm implements OnInit {
       return;
     }
 
+    this.error.set('');
     const valor = this.form.getRawValue();
     this.personaService
       .crear({
@@ -57,6 +62,9 @@ export class PersonaForm implements OnInit {
         region: valor.region,
         comuna: valor.comuna,
       })
-      .subscribe(() => this.form.reset());
+      .subscribe({
+        next: () => this.form.reset(),
+        error: () => this.error.set('No se pudo crear la persona. Revise los datos e intente nuevamente.'),
+      });
   }
 }

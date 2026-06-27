@@ -57,3 +57,10 @@
     color: rgb(113, 113, 122);
     cursor: not-allowed;
 }
+
+.persona-form__error {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+    color: rgb(185, 28, 28);
+}

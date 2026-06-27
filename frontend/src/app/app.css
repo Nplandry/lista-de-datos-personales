@@ -8,3 +8,8 @@ hr {
     opacity: 0.12;
     margin: 2rem 0;
 }
+
+#app-error {
+    text-align: center;
+    color: rgb(185, 28, 28);
+}

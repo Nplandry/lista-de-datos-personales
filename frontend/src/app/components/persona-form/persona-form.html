@@ -42,4 +42,8 @@
     </select>
 
     <button class="persona-form__submit" type="submit" [disabled]="form.invalid">Guardar</button>
+
+    @if (error()) {
+      <p class="persona-form__error">{{ error() }}</p>
+    }
 </form>

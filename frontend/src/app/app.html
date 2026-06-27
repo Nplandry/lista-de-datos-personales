@@ -6,4 +6,8 @@
 
 <hr />
 
+@if (error()) {
+  <p id="app-error">{{ error() }}</p>
+}
+
 <app-persona-lista [personas]="personas()" (eliminar)="eliminar($event)"></app-persona-lista>

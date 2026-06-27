@@ -3,11 +3,12 @@ import { Injectable, inject, signal } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
 import { Persona, PersonaRequest } from '../models/persona';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class PersonaService {
   private readonly http = inject(HttpClient);
-  private readonly baseUrl = 'http://localhost:8080/personas';
+  private readonly baseUrl = `${environment.apiUrl}/personas`;
 
   private readonly _personas = signal<Persona[]>([]);
   readonly personas = this._personas.asReadonly();

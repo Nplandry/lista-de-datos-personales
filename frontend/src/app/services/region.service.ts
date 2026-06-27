@@ -3,13 +3,14 @@ import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 
 import { Region } from '../models/region';
+import { environment } from '../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class RegionService {
   private readonly http = inject(HttpClient);
-  private readonly apiUrl = 'http://localhost:8080';
+  private readonly apiUrl = `${environment.apiUrl}/regiones`;
 
   listar(): Observable<Region[]> {
-    return this.http.get<Region[]>(`${this.apiUrl}/regiones`);
+    return this.http.get<Region[]>(this.apiUrl);
   }
 }

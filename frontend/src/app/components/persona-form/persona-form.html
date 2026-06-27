@@ -1,44 +1,31 @@
-<form class="persona-form" #personaForm="ngForm" (ngSubmit)="crear()">
+<form class="persona-form" [formGroup]="form" (ngSubmit)="crear()">
     <input
     class="persona-form__campo"
-    name="nombre"
-    [(ngModel)]="nombre"
+    formControlName="nombre"
     type="text"
-    placeholder="Nombre"
-    required />
+    placeholder="Nombre" />
 
     <input
     class="persona-form__campo"
-    name="apellido"
-    [(ngModel)]="apellido"
+    formControlName="apellido"
     type="text"
-    placeholder="Apellido"
-    required />
+    placeholder="Apellido" />
 
     <input
     class="persona-form__campo"
-    name="email"
-    [(ngModel)]="email"
+    formControlName="email"
     type="email"
-    placeholder="Email"
-    required
-    email />
+    placeholder="Email" />
 
     <input
     class="persona-form__campo"
-    name="edad"
-    [(ngModel)]="edad"
+    formControlName="edad"
     type="number"
-    placeholder="Edad"
-    required
-    min="18" />
+    placeholder="Edad" />
 
     <select
     class="persona-form__campo persona-form__select"
-    name="region"
-    [(ngModel)]="region"
-    (ngModelChange)="alCambiarRegion()"
-    required>
+    formControlName="region">
       <option value="" disabled>Seleccione región</option>
       @for (region of regiones(); track region.nombre) {
         <option [value]="region.nombre">{{ region.nombre }}</option>
@@ -47,15 +34,12 @@
 
     <select
     class="persona-form__campo persona-form__select"
-    name="comuna"
-    [(ngModel)]="comuna"
-    [disabled]="!region"
-    required>
+    formControlName="comuna">
       <option value="" disabled>Seleccione comuna</option>
       @for (comuna of comunas; track comuna) {
         <option [value]="comuna">{{ comuna }}</option>
       }
     </select>
 
-    <button class="persona-form__submit" type="submit" [disabled]="personaForm.invalid">Guardar</button>
+    <button class="persona-form__submit" type="submit" [disabled]="form.invalid">Guardar</button>
 </form>

@@ -6,7 +6,6 @@ import { Persona, PersonaRequest } from '../models/persona';
 
 @Injectable({ providedIn: 'root' })
 export class PersonaService {
-  //Variables de entorno desencapsulada
   private readonly http = inject(HttpClient);
   private readonly baseUrl = 'http://localhost:8080/personas';
 

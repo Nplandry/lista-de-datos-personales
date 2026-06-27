@@ -16,7 +16,6 @@ import com.prueba.backend.service.RegionService;
 public class RegionController {
     private final RegionService regionService;
 
-    // inyeccion de dependencias
     public RegionController(RegionService regionService) {
         this.regionService = regionService;
     }

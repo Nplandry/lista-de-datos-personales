@@ -5,6 +5,7 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
+// DTO de entrada
 public record PersonaRequest(
     @NotBlank String nombre,
     @NotBlank String apellido,

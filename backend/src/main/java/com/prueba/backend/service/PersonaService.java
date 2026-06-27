@@ -16,11 +16,13 @@ import com.prueba.backend.model.Persona;
 
 @Service
 public class PersonaService {
+    // En memoria, ya que no se utilizara ninguna db
     private final Map<Long, Persona> personas = new HashMap<>();
     private long siguienteId = 1;
 
     private final RegionService regionService;
 
+    // inyeccion de dependencias 
     public PersonaService(RegionService regionService) {
         this.regionService = regionService;
     }
@@ -72,6 +74,7 @@ public class PersonaService {
         return Optional.ofNullable(personas.get(id));
     }
 
+    // mapper modelo de dominio Persona al DTO de salida
     private PersonaResponse toResponse(Persona persona) {
         return new PersonaResponse(
             persona.id(),

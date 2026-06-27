@@ -25,10 +25,11 @@ import jakarta.validation.Valid;
 public class PersonaController {
     private final PersonaService personaService;
 
+    // inyeccion de dependencias del controlador rest
     public PersonaController(PersonaService personaService) {
         this.personaService = personaService;
     }
-
+    //Health check endpoint
     @GetMapping("/health")
     public String healthCheck() {
         return "OK";

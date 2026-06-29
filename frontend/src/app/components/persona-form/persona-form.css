@@ -64,3 +64,15 @@
     text-align: center;
     color: rgb(185, 28, 28);
 }
+
+@media (max-width: 640px) {
+    .persona-form {
+        grid-template-columns: 1fr;
+        padding: 0 1rem;
+    }
+
+    .persona-form__submit {
+        width: 100%;
+        padding: 0.75rem 1rem;
+    }
+}

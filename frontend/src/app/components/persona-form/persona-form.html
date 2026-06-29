@@ -36,7 +36,7 @@
     class="persona-form__campo persona-form__select"
     formControlName="comuna">
       <option value="" disabled>Seleccione comuna</option>
-      @for (comuna of comunas; track comuna) {
+      @for (comuna of comunas(); track comuna) {
         <option [value]="comuna">{{ comuna }}</option>
       }
     </select>

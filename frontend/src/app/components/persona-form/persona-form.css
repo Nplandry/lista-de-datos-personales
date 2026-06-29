@@ -1,78 +1,80 @@
-.persona-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
+.persona-lista {
+    margin: 0 auto;
     padding: 0 2em;
 }
 
-.persona-form__campo {
-    background: rgb(255, 255, 255);
-    border-radius: 0.5rem;
-    border: 1px solid rgb(92, 92, 92);
-    box-sizing: border-box;
-    color: inherit;
-    cursor: initial;
-    display: flex;
-    font: inherit;
-    gap: 0.5rem;
-    padding: calc(-1px + 1rem) 1rem;
-    transition: border 0.1s;
-    width: 100%;
-}
-.persona-form__campo:hover {
-    border: 1px solid rgb(40, 40, 40);
-}
-
-.persona-form__select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-.persona-form__submit {
-    grid-column: 1 / -1;
-    justify-self: center;
-    margin-top: 0.5rem;
-    padding: 0.75rem 6rem;
-    border: none;
-    border-radius: 0.5rem;
-    background: rgb(24, 24, 27);
-    color: rgb(255, 255, 255);
-    font: inherit;
+.persona-lista__titulo {
+    text-align: center;
     font-weight: 600;
+}
+
+.persona-lista__tabla {
+    width: 100%;
+    border-collapse: collapse;
+    font: inherit;
+}
+
+.persona-lista__tabla th,
+.persona-lista__tabla td {
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-bottom: 1px solid rgba(24, 24, 27, 0.1);
+}
+
+.persona-lista__tabla th {
+    font-weight: 600;
+    font-size: 0.875rem;
+    color: rgb(63, 63, 70);
+}
+
+.persona-lista__tabla tbody tr {
+    transition: background 0.1s;
+}
+
+.persona-lista__tabla tbody tr:hover {
+    background: rgba(24, 24, 27, 0.03);
+}
+
+.persona-lista__eliminar {
+    padding: 0.4rem 1rem;
+    border: 1px solid rgb(92, 92, 92);
+    border-radius: 0.5rem;
+    background: rgb(255, 255, 255);
+    color: inherit;
+    font: inherit;
     cursor: pointer;
-    transition: background 0.15s, transform 0.05s;
+    transition: border 0.1s, background 0.1s;
 }
 
-.persona-form__submit:hover {
-    background: rgb(63, 63, 70);
+.persona-lista__eliminar:hover {
+    border: 1px solid rgb(40, 40, 40);
+    background: rgba(24, 24, 27, 0.04);
 }
 
-.persona-form__submit:active {
+.persona-lista__eliminar:active {
     transform: scale(0.98);
 }
 
-.persona-form__submit:disabled {
-    background: rgb(212, 212, 216);
-    color: rgb(113, 113, 122);
-    cursor: not-allowed;
-}
-
-.persona-form__error {
-    grid-column: 1 / -1;
-    margin: 0;
+.persona-lista__vacio {
     text-align: center;
-    color: rgb(185, 28, 28);
+    color: rgb(113, 113, 122);
+    padding: 1.5rem 1rem;
 }
 
 @media (max-width: 640px) {
-    .persona-form {
-        grid-template-columns: 1fr;
+    .persona-lista {
         padding: 0 1rem;
     }
 
-    .persona-form__submit {
-        width: 100%;
-        padding: 0.75rem 1rem;
+    .persona-lista__tabla {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .persona-lista__tabla th,
+    .persona-lista__tabla td {
+        padding: 0.6rem 0.75rem;
     }
 }

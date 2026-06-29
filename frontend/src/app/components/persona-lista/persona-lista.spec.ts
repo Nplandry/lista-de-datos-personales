@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideZonelessChangeDetection } from '@angular/core';
 
 import { PersonaLista } from './persona-lista';
 
@@ -9,6 +10,7 @@ describe('PersonaLista', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [PersonaLista],
+      providers: [provideZonelessChangeDetection()],
     }).compileComponents();
 
     fixture = TestBed.createComponent(PersonaLista);

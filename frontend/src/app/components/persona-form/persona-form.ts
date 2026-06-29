@@ -1,5 +1,5 @@
-import { Component, OnInit, inject, signal } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Component, OnInit, computed, inject, signal } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { PersonaService } from '../../services/persona.service';
 import { RegionService } from '../../services/region.service';
 import { Region } from '../../models/region';
@@ -13,17 +13,19 @@ import { Region } from '../../models/region';
 export class PersonaForm implements OnInit {
   private readonly personaService = inject(PersonaService);
   private readonly regionService = inject(RegionService);
+  private readonly fb = inject(FormBuilder);
 
   readonly regiones = signal<Region[]>([]);
+  readonly regionSeleccionada = signal('');
   readonly error = signal('');
 
-  readonly form = new FormGroup({
-    nombre: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    apellido: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    email: new FormControl('', { nonNullable: true, validators: [Validators.required, Validators.email] }),
-    edad: new FormControl<number | null>(null, [Validators.required, Validators.min(18)]),
-    region: new FormControl('', { nonNullable: true, validators: [Validators.required] }),
-    comuna: new FormControl({ value: '', disabled: true }, { nonNullable: true, validators: [Validators.required] }),
+  readonly form = this.fb.group({
+    nombre: this.fb.nonNullable.control('', Validators.required),
+    apellido: this.fb.nonNullable.control('', Validators.required),
+    email: this.fb.nonNullable.control('', [Validators.required, Validators.email]),
+    edad: this.fb.control<number | null>(null, [Validators.required, Validators.min(18)]),
+    region: this.fb.nonNullable.control('', Validators.required),
+    comuna: this.fb.nonNullable.control({ value: '', disabled: true }, Validators.required),
   });
 
   ngOnInit(): void {
@@ -33,6 +35,7 @@ export class PersonaForm implements OnInit {
     });
 
     this.form.controls.region.valueChanges.subscribe((region) => {
+      this.regionSeleccionada.set(region);
       this.form.controls.comuna.setValue('');
       if (region) {
         this.form.controls.comuna.enable();
@@ -42,9 +45,10 @@ export class PersonaForm implements OnInit {
     });
   }
 
-  get comunas(): string[] {
-    return this.regiones().find((region) => region.nombre === this.form.controls.region.value)?.comunas ?? [];
-  }
+  readonly comunas = computed(() => {
+    const region = this.regionSeleccionada();
+    return this.regiones().find((reg) => reg.nombre === region)?.comunas ?? [];
+  });
 
   crear(): void {
     if (this.form.invalid) {

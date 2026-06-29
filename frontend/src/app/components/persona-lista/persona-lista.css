@@ -60,3 +60,21 @@
     color: rgb(113, 113, 122);
     padding: 1.5rem 1rem;
 }
+
+@media (max-width: 640px) {
+    .persona-lista {
+        padding: 0 1rem;
+    }
+
+    .persona-lista__tabla {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .persona-lista__tabla th,
+    .persona-lista__tabla td {
+        padding: 0.6rem 0.75rem;
+    }
+}
